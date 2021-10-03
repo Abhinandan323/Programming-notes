@@ -1,0 +1,19 @@
+#include<stdio.h>
+void main() {
+  int rem, n, i , s=0, temp, f=1;
+  printf("Enter a value: ");
+  scanf("%d", &n);
+  for(temp=n;n!=0;n=n/10) {
+    rem = n%10;
+    f = 1;
+    for(i=1;i<=rem; i++) {
+      f=f*i;
+    }
+    s=s+f;
+  }
+  if (temp==s) {
+    printf("The given number %d is a strong number\n", temp);
+  } else{
+    printf("The given number %d is not a strong number\n", temp);
+  }
+}
