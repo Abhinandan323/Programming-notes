@@ -1,6 +1,6 @@
 package DSA;
 import java.util.ArrayList;
-public class arraylistAdd {
+public class ArrayListAdd {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> list = new ArrayList<>();
