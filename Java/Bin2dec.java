@@ -7,7 +7,7 @@ import java.lang.Math;
  * @author safouene
  *
  */
-public class bin2dec {
+public class Bin2dec {
 
 	/**
 	 * @param args
