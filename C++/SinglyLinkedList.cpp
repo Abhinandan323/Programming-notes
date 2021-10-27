@@ -13,12 +13,47 @@ public:
         Data=val;
         next=NULL;
     }
+    void InsertAtTail(Node* &head,int value);
+    void InsertAtHead(Node* &head,int value);
+    void Display(Node* head);
+    bool Search(Node* head,int Value);
+    bool empty() const;
+    void removeFront();
+
+    Node* getHead() const { return head; };   // return head address
+    Node* getTail() const { return tail; };
+
 
 private:
     int* head;
-    int * tail;
+    int* tail;
     
 };
+
+///Destructor avoiding memory leak, deletes every element in the array until head == NULL
+Node::~Node(){
+    while(!empty()){
+
+        delete removeFront();
+    }
+}
+
+///Removes element at head and reassigns the pointer to the next element in the list 
+Node::removeFront(){
+
+    Node *old = head;
+    head = old->next;
+
+    if(head == NULL){tail = NULL};
+    delete old;
+
+}
+
+///Here we are returning true if list is empty, otherwise false
+Node::empty(){
+
+    return head == NULL;
+}
 
 ///Here we are inserting a node at the End of the Linked List.
 Node::void InsertAtTail(Node* &head,int value)
