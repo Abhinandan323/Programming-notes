@@ -8,15 +8,20 @@ public:
     int Data;
     Node* next;
 
-    Node(int val)
+    Node(int val) : head(NULL), tail(NULL)
     {
         Data=val;
         next=NULL;
     }
+
+private:
+    int* head;
+    int * tail;
+    
 };
 
 ///Here we are inserting a node at the End of the Linked List.
-void InsertAtTail(Node* &head,int value)
+Node::void InsertAtTail(Node* &head,int value)
 {
 
     Node* n=new Node(value);
@@ -39,7 +44,7 @@ void InsertAtTail(Node* &head,int value)
 }
 
 ///Here we are inserting node at the start of linked list.
-void InsertAtHead(Node* &head,int value)
+Node::void InsertAtHead(Node* &head,int value)
 {
     Node* n=new Node(value);
 
@@ -48,7 +53,7 @@ void InsertAtHead(Node* &head,int value)
 }
 
 ///Here we are displaying the whole linked list.
-void Display(Node* head)
+Node::void Display(Node* head)
 {
     Node* n=head;
     while(n!=NULL)
@@ -61,7 +66,7 @@ void Display(Node* head)
 }
 
 ///Here we are searching for a particular element in the linked list.
-bool Search(Node* head,int Value)
+Node::bool Search(Node* head,int Value)
 {
     Node* n=head;
     while(n->next!=NULL)
