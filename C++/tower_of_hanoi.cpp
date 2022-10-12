@@ -1,22 +1,25 @@
 #include<iostream>
 using namespace std;
 
-void tower_of_hanoi(int n,char from_rod,char to_rod, char aux_rod)
-{
-    if (n == 1)
-    {
-        cout << "Move disk 1 from rod " << from_rod <<" to rod " << to_rod<<endl;
+void TowersOfHanoi(int n, char frompeg, char topeg, char auxpeg) {
+
+    if (n==1){
+        printf("Move disk 1 from peg %c to peg % c", frompeg, topeg);
         return;
     }
-    tower_of_hanoi(n - 1, from_rod, aux_rod, to_rod); // shifting n-1 discs from 'A' to 'B'
-    cout << "Move disk " << n << " from rod " << from_rod <<" to rod " << to_rod <<endl; 
-    tower_of_hanoi(n - 1, aux_rod, to_rod, from_rod); //shifting n-1 discs from 'B' to 'C'
-}
+    
+    TowersofHanoi(n-1, frompeg, auxpeg, topeg);
+    
+    printf("\n Move disk %d from peg %c to peg %c", n, frompeg, topeg);
 
-int main()
-{
-    int n;
-    cout<<"ENTER NO. OF DISCS:";
-    cin>>n;
-    tower_of_hanoi(n,'A','C','B');
+    TowersOfHanoi(n-1, auxpeg, topeg, frompeg);
+}
+  
+int main() {
+
+    int n = 5;
+    cout<<TowersOfHanoi(n, frompeg, topeg, auxpeg);
+
+
+    return 0;
 }
