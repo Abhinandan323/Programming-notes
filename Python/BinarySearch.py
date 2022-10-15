@@ -14,6 +14,7 @@ def binary_search(array, target):
 
     return -1
 
+
 if __name__ == "__main__":
     array = [1, 3, 4, 7, 12, 24, 36]
     print(f"Input array: {array}")
