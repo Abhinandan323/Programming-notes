@@ -11,7 +11,7 @@ public class Anagrams {
 		
 		if(a.length() == b.length()) {
 			
-		for(int i = 0; i < a.length(); i++)
+		for(int i = 0; i <= a.length()-1; i++)
 		{
 			char c = a.charAt(i);
 			isAnagram = false;
@@ -28,10 +28,11 @@ public class Anagrams {
 				break;
 		}
 		} 
-		if(isAnagram)
-			System.out.println("anagram");
-		else
+		
+		if(!isAnagram)
 			System.out.println("not anagram");
+		else
+			System.out.println("anagram");
         
             sc.close();
 	}
