@@ -1,0 +1,52 @@
+    priority_queue<int> mxleft;
+    priority_queue<int,vector<int>,greater<int>> mnright;
+    double median=0.0;
+    int i=0;
+    vector<int> arr;
+    void insertHeap(int &x)
+    {
+        arr.push_back(x);
+    }
+    
+    double getMedian()
+    {
+        if(arr.size()==1){median=arr[0];mxleft.push(median);}
+        else{
+            if(mxleft.size()==mnright.size()){
+                if (arr[arr.size()-1]<median)
+                {
+                    mxleft.push(arr[arr.size()-1]);
+                    median = mxleft.top();
+                }
+                else
+                {
+                    mnright.push(arr[arr.size()-1]);
+                    median = (double)mnright.top();
+                }
+            }
+            else if(mxleft.size()>mnright.size()){
+                if (arr[arr.size()-1]<median)
+                {
+                    mnright.push(mxleft.top());
+                    mxleft.pop();
+                    mxleft.push(arr[arr.size()-1]);
+                }
+                else
+                    mnright.push(arr[arr.size()-1]);
+      
+                median=(mnright.top()+mxleft.top())/2.0;
+            }
+            else{
+                if(arr[arr.size()-1]<median){
+                    mxleft.push(arr[arr.size()-1]);
+                }
+                else{
+                    mxleft.push(mnright.top());
+                    mnright.pop();
+                    mnright.push(arr[arr.size()-1]);
+                }
+                median=(mnright.top()+mxleft.top())/2.0;
+            }
+        }
+        return median;
+    }
