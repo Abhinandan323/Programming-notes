@@ -1,0 +1,34 @@
+int X[4]={0,0,1,-1};
+int Y[4]={1,-1,0,0};
+int orangesRotting(vector<vector<int>>& grid) {
+    int m=grid.size(),n=grid[0].size();
+    int fresh=0;
+    queue<pair<int,int>> q;
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(grid[i][j]==1)fresh++;
+            if(grid[i][j]==2)q.push({i,j});
+        }
+    }
+    int count=0,minute=-1;
+    while(!q.empty()){
+        minute++;
+        int s=q.size();
+        count+=s;
+        for(int i=0;i<s;i++){
+            pair<int,int> p=q.front();
+            q.pop();
+            for(int d=0;d<4;d++){
+                int x=p.first+X[d],y=p.second+Y[d];
+                if(x<0 || y<0 || x>=m || y>=n ||  grid[x][y]!=1)continue;
+                fresh--;
+                grid[x][y]=2;
+                q.push({x,y});
+            }
+        }
+        
+    }
+    if(fresh>0)return -1;
+    if(minute==-1)minute=0;
+    return minute;
+}
